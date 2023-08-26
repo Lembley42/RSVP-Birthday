@@ -37,7 +37,7 @@ def send():
         f"Accepted: {accepted}",
         f"Number of Guests: {numberOfGuests}",
         f"Selected Room: {selectedRoom}",
-        "Guests:" + '\n' + '\n'.join([f"Name: {guest['Name']}, DateOfBirth: {guest['DateOfBirth']}, American Airlines #: {guest['AaId']}, E-Mail: {guest['Email']}" for guest in guests])
+        f"Guests:<br>" + '<br>'.join([f"<b>Name:</b> {guest['Name']} <br> DateOfBirth: {guest['DateOfBirth']} <br> American Airlines #: {guest['AaId']} <br> E-Mail: {guest['Email']}" for guest in guests])
     ]
 
     # Send email
