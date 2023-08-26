@@ -48,7 +48,7 @@ def send():
 
     # Add to Google Sheets
     rows = [
-        [accepted, numberOfGuests, selectedRoom, guest['Name'], guest['DateOfBirth'], guest['AaId'], guest['Email']] for guest in guests
+        accepted, numberOfGuests, selectedRoom, [guest['Name'], guest['DateOfBirth'], guest['AaId'], guest['Email']] for guest in guests
     ]
     gsheets = connect_google_sheets()
     add_to_google_sheets(gsheets, rows)
