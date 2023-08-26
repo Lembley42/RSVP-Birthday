@@ -46,10 +46,15 @@ def send():
 
     Decrypt_File('service-account.bin', 'service-account.json')
 
-    # Add to Google Sheets
-    rows = [
-        accepted, numberOfGuests, selectedRoom, [guest['Name'], guest['DateOfBirth'], guest['AaId'], guest['Email']] for guest in guests
-    ]
+    # First, generate the guest rows.
+    guest_rows = [[guest['Name'], guest['DateOfBirth'], guest['AaId'], guest['Email']] for guest in guests]
+
+    # Now, create the first row with static info and the first guest's data.
+    first_row = [accepted, numberOfGuests, selectedRoom] + guest_rows.pop(0)
+
+    # Assemble the final rows.
+    rows = [first_row] + guest_rows
+
     gsheets = connect_google_sheets()
     add_to_google_sheets(gsheets, rows)
 
