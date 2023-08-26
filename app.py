@@ -52,6 +52,9 @@ def send():
     # Now, create the first row with static info and the first guest's data.
     first_row = [accepted, numberOfGuests, selectedRoom] + guest_rows.pop(0)
 
+    # All other rows need to be padded with empty strings.
+    guest_rows = [['', '', ''] + row for row in guest_rows]
+
     # Assemble the final rows.
     rows = [first_row] + guest_rows
 
